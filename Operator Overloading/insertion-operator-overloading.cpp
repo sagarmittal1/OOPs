@@ -1,0 +1,35 @@
+// Insertion Operator Overloading using friend function
+// for complex no.
+
+#include <iostream>
+using namespace std;
+
+class Complex {
+	private:
+		int real;
+		int img;
+		
+	public:
+		Complex(int r = 0, int i = 0){
+			real = r;
+			img = i;
+		}
+		void display() {
+			cout << real << " + i" << img << endl;
+		}
+		
+		friend ostream & operator<<(ostream &out, Complex &c);
+};
+
+ostream & operator<<(ostream &out, Complex &c){
+	out << c.real << " + i"<< c.img << endl;
+	return out;
+}
+
+int main()
+{
+	Complex c(10, 3);
+	cout << c;
+	
+	return 0;           
+}
